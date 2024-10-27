@@ -25,11 +25,16 @@ const AttendanceForm = ({ token, onAttendanceUpdate }) => {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            setError('');
-            alert('Attendance recorded successfully!');
-            onAttendanceUpdate(response.data); // Update attendance list
+            if (response.status === 200) {
+                alert('Attendance recorded successfully!');
+                onAttendanceUpdate(); // Update attendance list
+                console.log('Attendance recorded:', response.data); // Log success
+            } else {
+                console.error('Failed to record attendance:', response.data);
+            }
+
         } catch (err) {
-            console.error(err);
+            console.error('Error recording attendance:', err);
             setError('Failed to record attendance');
         }
     };

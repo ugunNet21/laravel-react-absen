@@ -18,6 +18,7 @@ import Register from "./pages/Register";
 
 const App = () => {
     const [token, setToken] = useState('');
+    const [refresh, setRefresh] = useState(false);
 
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
@@ -40,7 +41,9 @@ const App = () => {
             console.error('Logout failed', err);
         }
     };
-
+    const handleAttendanceUpdate = () => {
+        setRefresh(prev => !prev); // Toggle refresh state
+    };
     return (
         <Router>
             <div>
@@ -52,8 +55,8 @@ const App = () => {
                     <Route path="/register" element={<Register />} />
                     <Route path="/attendance" element={token ? (
                         <div>
-                            <AttendanceForm token={token} />
-                            <AttendanceList token={token} />
+                            <AttendanceForm token={token} onAttendanceUpdate={handleAttendanceUpdate} />
+                            <AttendanceList token={token} refresh={refresh} />
                         </div>
                     ) : (
                         <div>Please log in to access this page.</div>

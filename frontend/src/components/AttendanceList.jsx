@@ -6,7 +6,7 @@ import React, {
 
 import axios from "axios";
 
-const AttendanceList = ({ token }) => {
+const AttendanceList = ({ token, refresh }) => {
     const [attendances, setAttendances] = useState([]);
 
     useEffect(() => {
@@ -23,7 +23,7 @@ const AttendanceList = ({ token }) => {
             }
         };
         fetchAttendances();
-    }, [token]);
+    }, [token, refresh]);
 
     return (
         <div>
