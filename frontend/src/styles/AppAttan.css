@@ -74,7 +74,10 @@ a:hover {
 /* Media Query untuk Responsif */
 @media (min-width: 768px) {
     .app-container {
-        padding: 600px;
+        padding-left: 200px ;
+        padding-right: 200px;
+        margin-left: 600px;
+        margin-right: 300px;
     }
     nav {
         justify-content: space-between;
