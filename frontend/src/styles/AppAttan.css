@@ -1,0 +1,86 @@
+/* Kontainer Utama */
+.app-container {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: #f3f4f6;
+    min-height: 100vh;
+}
+
+/* Header */
+h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+}
+
+nav button {
+    background-color: #ff7043;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav button:hover {
+    background-color: #ff5722;
+}
+
+/* Link Navigasi */
+a {
+    text-decoration: none;
+    color: #e4ece4;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #388e3c;
+}
+
+/* Kontainer Form Attendance */
+.attendance-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+    width: 100%;
+}
+
+/* Pesan untuk Halaman yang Memerlukan Login */
+.login-required {
+    font-size: 18px;
+    color: #ff4c4c;
+    margin-top: 20px;
+}
+
+/* Media Query untuk Responsif */
+@media (min-width: 768px) {
+    .app-container {
+        padding: 600px;
+    }
+    nav {
+        justify-content: space-between;
+    }
+    nav button {
+        padding: 10px 20px;
+        font-size: 18px;
+    }
+}

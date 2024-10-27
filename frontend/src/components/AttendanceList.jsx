@@ -1,4 +1,6 @@
 // src/components/AttendanceList.jsx
+import "../styles/Attendance.css";
+
 import React, {
     useEffect,
     useState,
@@ -26,23 +28,21 @@ const AttendanceList = ({ token, refresh }) => {
     }, [token, refresh]);
 
     return (
-        <div>
-            <h2>Attendance List</h2>
-            <ul>
-                {attendances.map((attendance) => (
-                    <li key={attendance.id}>
-                        <p>Time: {new Date(attendance.attendance_time).toLocaleString()}</p>
-                        <p>Location: {attendance.location}</p>
-                        {attendance.photo_path && (
-                            <img
-                                src={`http://localhost:8000/storage/${attendance.photo_path}`}
-                                alt="Attendance"
-                                width="100"
-                            />
-                        )}
-                    </li>
-                ))}
-            </ul>
+        <div className="container">
+            <h2 className="header">Attendance List</h2>
+            {attendances.map((attendance) => (
+                <div className="card" key={attendance.id}>
+                    <p>Time: {new Date(attendance.attendance_time).toLocaleString()}</p>
+                    <p>Location: {attendance.location}</p>
+                    {attendance.photo_path && (
+                        <img
+                            src={`http://localhost:8000/storage/${attendance.photo_path}`}
+                            alt="Attendance"
+                            width="100"
+                        />
+                    )}
+                </div>
+            ))}
         </div>
     );
 };

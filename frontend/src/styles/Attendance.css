@@ -1,0 +1,110 @@
+/* Kontainer utama */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Header */
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+/* Tombol */
+.button-primary,
+.button-secondary {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    max-width: 200px;
+}
+
+.button-primary {
+    background-color: #4caf50;
+    color: white;
+}
+
+.button-secondary {
+    background-color: #ff7043;
+    color: white;
+}
+
+.button-primary:hover,
+.button-secondary:hover {
+    opacity: 0.9;
+}
+
+/* Pratinjau Video dan Gambar */
+.video-preview,
+.img-preview {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+/* Kartu Data Kehadiran */
+.card {
+    background-color: #393535;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.card img {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Pesan Error */
+.error {
+    color: #ff4c4c;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Lokasi */
+.location {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Media Query untuk Tampilan Responsif */
+/* Tablet */
+/* @media (min-width: 768px) {
+
+    .container {
+        margin: 30px auto;
+        max-width: 80%;
+    }
+} */
+
+/* Desktop */
+/* @media (min-width: 1024px) {
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        margin-left: 700px;
+    }
+} */

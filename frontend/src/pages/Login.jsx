@@ -1,3 +1,5 @@
+import "../styles/LoginRegister.css";
+
 import React, { useState } from "react";
 
 import axios from "axios";
@@ -7,7 +9,7 @@ const Login = ({ setToken }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const navigate = useNavigate(); // Initialize navigate
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -16,20 +18,20 @@ const Login = ({ setToken }) => {
             setToken(response.data.token);
             localStorage.setItem('token', response.data.token);
             setError('');
-            navigate('/attendance'); // Use navigate instead of window.location.href
+            navigate('/attendance');
         } catch (err) {
             setError('Login failed');
         }
     };
 
     return (
-        <div>
-            <h2>Login</h2>
+        <div className="container">
+            <h2 className="header">Login</h2>
             <form onSubmit={handleSubmit}>
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
                 <button type="submit">Login</button>
-                {error && <p>{error}</p>}
+                {error && <p className="error">{error}</p>}
             </form>
         </div>
     );

@@ -1,0 +1,84 @@
+/* Kontainer utama untuk Login dan Register */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Header */
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+/* Form input dan tombol */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 12px;
+    font-size: 16px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* Pesan Error */
+.error {
+    color: #ff4c4c;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Media Query untuk Tampilan Responsif */
+/* Tablet */
+@media (min-width: 768px) {
+
+    .container {
+        margin: 30px auto;
+        max-width: 80%;
+    }
+}
+
+/* Desktop */
+/* @media (min-width: 1024px) {
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        margin-left: 700px;
+    }
+} */

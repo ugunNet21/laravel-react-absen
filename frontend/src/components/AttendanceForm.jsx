@@ -1,4 +1,6 @@
 // src/components/AttendanceForm.jsx
+import "../styles/Attendance.css";
+
 import React, {
     useEffect,
     useRef,
@@ -11,13 +13,13 @@ const AttendanceForm = ({ token, onAttendanceUpdate }) => {
     const [error, setError] = useState('');
     const [location, setLocation] = useState(null);
     const [photo, setPhoto] = useState(null);
-    const [isPhotoTaken, setIsPhotoTaken] = useState(false); // Status foto diambil atau belum
+    const [isPhotoTaken, setIsPhotoTaken] = useState(false);
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
 
     useEffect(() => {
         if (!isPhotoTaken) {
-            startCamera(); // Mulai kamera saat komponen dimuat jika foto belum diambil
+            startCamera();
         }
     }, [isPhotoTaken]);
 
@@ -37,22 +39,19 @@ const AttendanceForm = ({ token, onAttendanceUpdate }) => {
 
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
-
-        // Ambil frame dari video
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        // Ubah canvas ke Blob untuk dikirim sebagai file
         canvas.toBlob((blob) => {
             setPhoto(blob);
-            setIsPhotoTaken(true); // Set status foto diambil
+            setIsPhotoTaken(true);
             setError('');
         }, 'image/jpeg');
     };
 
     const handleRetakePhoto = () => {
         setPhoto(null);
-        setIsPhotoTaken(false); // Reset status foto untuk memungkinkan pengambilan ulang
-        startCamera(); // Mulai ulang kamera
+        setIsPhotoTaken(false);
+        startCamera();
     };
 
     const handleAttendance = async () => {
@@ -74,7 +73,7 @@ const AttendanceForm = ({ token, onAttendanceUpdate }) => {
             });
             if (response.status === 200) {
                 alert('Attendance recorded successfully!');
-                onAttendanceUpdate(); // Update attendance list
+                onAttendanceUpdate();
             } else {
                 console.error('Failed to record attendance:', response.data);
             }
@@ -100,33 +99,33 @@ const AttendanceForm = ({ token, onAttendanceUpdate }) => {
     };
 
     return (
-        <div>
-            <h2>Record Attendance</h2>
-            <button onClick={getLocation}>Get Location</button>
+        <div className="container">
+            <h2 className="header">Record Attendance</h2>
+            <button className="button-primary" onClick={getLocation}>Get Location</button>
 
             <div>
                 {!isPhotoTaken ? (
                     <div>
-                        <video ref={videoRef} autoPlay style={{ width: "100%", maxWidth: "400px" }} />
-                        <button onClick={handleTakePhoto}>Take Photo</button>
+                        <video ref={videoRef} autoPlay className="video-preview" />
+                        <button className="button-primary" onClick={handleTakePhoto}>Take Photo</button>
                     </div>
                 ) : (
                     <div>
                         <img
                             src={URL.createObjectURL(photo)}
                             alt="Attendance"
-                            style={{ width: "100%", maxWidth: "400px" }}
+                            className="img-preview"
                         />
-                        <button onClick={handleRetakePhoto}>Retake Photo</button>
+                        <button className="button-secondary" onClick={handleRetakePhoto}>Retake Photo</button>
                     </div>
                 )}
                 <canvas ref={canvasRef} style={{ display: "none" }}></canvas>
             </div>
 
-            <button onClick={handleAttendance}>Record Attendance</button>
-            {error && <p>{error}</p>}
+            <button className="button-primary" onClick={handleAttendance}>Record Attendance</button>
+            {error && <p className="error">{error}</p>}
             {location && (
-                <p>
+                <p className="location">
                     Location: {location.latitude}, {location.longitude}
                 </p>
             )}

@@ -1,12 +1,15 @@
+import "./styles/AppAttan.css";
+
 // src/App.jsx
 import React, {
     useEffect,
     useState,
 } from "react";
 
-import axios from "axios"; // Import axios for API requests
+import axios from "axios";
 import {
     BrowserRouter as Router,
+    Link,
     Route,
     Routes,
 } from "react-router-dom";
@@ -36,35 +39,44 @@ const App = () => {
             });
             setToken('');
             localStorage.removeItem('token');
-            navigate('/login'); // Redirect to login page after logout
         } catch (err) {
             console.error('Logout failed', err);
         }
     };
+
     const handleAttendanceUpdate = () => {
-        setRefresh(prev => !prev); // Toggle refresh state
+        setRefresh(prev => !prev);
     };
+
     return (
         <Router>
-            <div>
+            <div className="app-container">
                 <nav>
-                    {token && <button onClick={handleLogout}>Logout</button>}
+                    <Link to="/">Home</Link>
+                    {token ? (
+                        <button onClick={handleLogout}>Logout</button>
+                    ) : (
+                        <>
+                            <Link to="/login">Login</Link>
+                            <Link to="/register">Register</Link>
+                        </>
+                    )}
                 </nav>
                 <Routes>
                     <Route path="/login" element={<Login setToken={setToken} />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/attendance" element={token ? (
-                        <div>
+                        <div className="attendance-container">
                             <AttendanceForm token={token} onAttendanceUpdate={handleAttendanceUpdate} />
                             <AttendanceList token={token} refresh={refresh} />
                         </div>
                     ) : (
-                        <div>Please log in to access this page.</div>
+                        <div className="login-required">Please log in to access this page.</div>
                     )} />
                     <Route path="/" element={
                         <div>
                             <h1>Welcome to the Attendance App</h1>
-                            <a href="/login">Login</a> | <a href="/register">Register</a>
+                            <Link to="/login">Login</Link> | <Link to="/register">Register</Link>
                         </div>
                     } />
                 </Routes>
